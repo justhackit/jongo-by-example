@@ -38,7 +38,7 @@ public class Hero extends HumanCharacter {
                 @JsonProperty(CHILDREN) Set<? extends HumanCharacter> children,
                 @JsonProperty(BEASTS) Set<? extends Beast> beasts,
                 @JsonProperty(WEAPON) Weapon weapon) {
-        super(_id, firstName, lastName, Gender.MALE, address, children, beasts, weapon);
+        super(firstName, lastName, Gender.MALE, address, children, beasts, weapon);
     }
 
     public static Hero createHeroWithoutChildrenAndNoBeasts(String firstName, String lastName, Address address, Weapon weapon) {
@@ -49,6 +49,11 @@ public class Hero extends HumanCharacter {
                                                Set<? extends HumanCharacter> children, Weapon weapon) {
         return new Hero(null, firstName, lastName, address, children, null, weapon);
     }
+    
+    public static Hero createHeroWithoutBeasts(String firstName, String lastName, Address address,
+            Set<? extends HumanCharacter> children) {
+return new Hero(null, firstName, lastName, address, children, null, null);
+}
 
     public static Hero addBeast(Hero hero, Beast beast) {
         return new Hero(hero.getId(), hero.getFirstName(), hero.getLastName(), hero.getAddress(),
